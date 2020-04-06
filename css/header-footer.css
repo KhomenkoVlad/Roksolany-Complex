@@ -6,19 +6,11 @@
 
 body, html {
     overflow-x: hidden;
-    background-color: rgb(206, 206, 206);
-}
-
-main{
-    position: relative;
-    z-index: 2;
 }
 
 header {
     background-color: white;
     width: 100%;
-    position: absolute;
-    z-index: 2;
 }
 
 header .site-header__wrap {
@@ -91,176 +83,7 @@ header .menu li a:hover {
     color: rgb(204, 51, 51);
 }
 
-.background-picture{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    z-index: 1;
-}
-
-.main-title{
-    text-align: center;
-    margin: 235px auto;
-    color: white;
-}
-
-.building{
-    width: 100%;
-    background-color: white;
-}
-
-.building section {
-    max-width: 1230px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    position: relative;
-    bottom: 75px;
-}
-
-.building section a {
-    background-color: rgb(184, 57, 57);
-    text-decoration: none;
-    color: white;
-    padding-top: 30px;
-    padding-bottom: 0px;
-    flex-basis: 24%;
-    position: relative;
-    bottom: 0;
-    transition: all 0.3s ease;
-}
-
-.building section a:hover{
-    bottom: 20px;
-}
-
-.building section article h2 {
-    padding: 10px 30px;
-    line-height: 1.2;
-}
-
-#four{
-    line-height: 1.33;
-}
-
-.building section article p {
-    padding: 10px 30px;
-    line-height: 1.2;
-}
-
-.building section article img {
-    width: 100%;
-    margin: 0;
-    vertical-align: middle;
-}
-
-.features{
-    width: 100%;
-    background-color: rgb(249, 247, 244);
-    padding: 50px 0;
-}
-
-.features hgroup{
-    text-align: center;
-}
-
-.features hgroup h2{
-    color: #3b3d42;
-    font-size: 40px;
-}
-
-.features hgroup h3{
-    color: rgba(57,70,79,0.64);
-    font-size: 24px;
-    margin-bottom: 24px;
-}
-
-.features section{
-    max-width: 1230px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 20px;
-}
-
-.features section article {
-    flex-basis: 24%;
-    text-align: center;
-}
-
-.features section article h3 {
-    padding: 10px 0;
-    color: #3b3d42;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.features section article p {
-    font-size: 14px;
-    line-height: 1.6;
-    padding: 10px 0;
-}
-
-.features section article img {
-    margin: 20px;
-}
-
-.news{
-    background-color: white;
-    padding: 50px 5px;
-}
-
-.news section{
-    max-width: 1230px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.news section h2 {
-    flex-basis: 100%;
-    padding-bottom: 40px;
-}
-.news section article {
-    flex-basis: 32.5%;
-}
-
-.news section article h3 {
-    margin: 15px 0;
-    font-size: 15px;
-    color: rgb(184, 51, 51);
-}
-
-.news section article p {
-    font-size: 12px;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.news section article img {
-    width: 100%;
-    margin: 0;
-}
-
-.news section article a{
-    font-size: 12px;
-    background-color: black;
-    color: white;
-    padding: 8px 25px 7px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.news section article a:hover{
-    background-color: rgb(184, 51, 51);
-}
+/* ----------------------------------------------------------------------------------- */
 
 footer{
     background-color: rgb(249, 247, 244);
@@ -433,48 +256,9 @@ footer .footer-copyright ul li a:hover{
         display: flex;
         flex-direction: column;
     }
-    .building section {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-    .building section a {
-        background-color: rgb(184, 57, 57);
-        flex-basis: 48%;
-        margin-top: 40px;
-        color: white;
-    }
-    .building section article h2 {
-        padding: 10px 20px;
-    }
-    .building section article p {
-        padding: 10px 20px;
-    }
-    .features section{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-    .features section article {
-        padding-top: 30px;
-        padding-bottom: 20px;
-        flex-basis: 48%;
-        text-align: center;
-    }
-    .news section h2 {
-        padding-bottom: 0px;
-    }
-    .news section{
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .news section article {
-        margin-top: 40px;
-    }
+    
+/* --------------------------------------------------------------------------------------------------------- */
+    
     footer .site-footer__wrap{
         padding-top: 20px;
         display: flex;
