@@ -306,8 +306,8 @@ footer .site-footer__wrap .contact-us ul{
 
 footer .site-footer__wrap .contact-us ul li{
     margin: 10px 0;
+    width: fit-content;
     color: rgb(129, 129, 129);
-    transition: all 0.3s ease;
 }
 
 footer .site-footer__wrap .contact-us ul li:hover{
@@ -498,6 +498,9 @@ footer .footer-copyright ul li a:hover{
         width: 100%;
         margin: 0 auto;
         text-align: center;
+    }
+    footer .site-footer__wrap .contact-us ul li{
+        margin: 10px auto;
     }
     footer .site-footer__wrap nav ul{
         width: 100%;
