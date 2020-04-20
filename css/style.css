@@ -130,6 +130,7 @@ header .menu li a:hover {
     position: relative;
     bottom: 0;
     transition: all 0.3s ease;
+    vertical-align: bottom;
 }
 
 .building section a:hover{
@@ -139,10 +140,7 @@ header .menu li a:hover {
 .building section article h2 {
     padding: 10px 30px;
     line-height: 1.2;
-}
-
-#four{
-    line-height: 1.33;
+    font-size: 17px;
 }
 
 .building section article p {
@@ -447,6 +445,7 @@ footer .footer-copyright ul li a:hover{
     }
     .building section article h2 {
         padding: 10px 20px;
+        font-size: 15px;
     }
     .building section article p {
         padding: 10px 20px;
@@ -526,5 +525,10 @@ footer .footer-copyright ul li a:hover{
     }
     footer .footer-copyright ul{
         margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .building section a {
+        flex-basis: 95%;
     }
 }
