@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <nav>
+        <div class="container-custom">
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="news-tab" data-toggle="tab" href="#nav-news" role="tab"
+                        aria-controls="home" aria-selected="true">Головна</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="kolorit-tab" data-toggle="tab" href="#nav-kolorit" role="tab"
+                        aria-controls="home" aria-selected="true">Ресторан «Закарпатський колорит»</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#nav-koliba" role="tab"
+                        aria-controls="profile" aria-selected="false">Колиба «Хуторок»</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#nav-harchev" role="tab"
+                        aria-controls="contact" aria-selected="false">Харчевня</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#nav-podvirja" role="tab"
+                        aria-controls="contact" aria-selected="false">Готель «Сільське подвір’я»</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link" id="admin-index">На сайт</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="admin-exit">Вийти</button>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <br>
+    <div class="container-custom">
+        <div class="tab-content" id="nav-tabContent">
+
+            <!------------- News -------------->
+
+            <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#nav-index"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Загальна інформація</a>
+                            <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#nav-news-menu"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Додати новину</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-index-about"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Опис комплексу</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-index-contacts"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Контактні дані</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <!-- Index -->
+
+                            <div class="tab-pane fade query-data show active" id="nav-index" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <form enctype="multipart/form-data" method="post">
+                                            <div class="form-group">
+                                                <label for="edit-login">Логін:</label>
+                                                <input type="text" id="edit-login" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="edit-pass">Пароль:</label>
+                                                <input type="text" id="edit-pass" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="edit-button">Змінити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add or edit -->
+
+                            <div class="tab-pane fade query-data show" id="nav-news-menu" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="news-selelct">Оберіть зі списку:</label>
+                                            <select name="news-selelct" id="news-selelct" class="form-control">
+                                            </select>
+                                        </div>
+
+                                        <form enctype="multipart/form-data" method="post">
+                                            <div id="goods-out" class="goods-out"></div>
+
+                                            <div class="form-group">
+                                                <label for="news-name">Назва:</label>
+                                                <input type="text" id="news-name" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="news-image">Зображення:</label>
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"
+                                                                id="inputGroupFileAddon01">Завантажити</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="iimg" class="custom-file-input"
+                                                                id="news-image-input"
+                                                                aria-describedby="inputGroupFileAddon01" required>
+                                                            <label class="custom-file-label" id="news-image-label"
+                                                                for="inputGroupFile01">Оберіть
+                                                                файл</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="news-ckeditor">Текст:</label>
+                                                <textarea type="text" id="news-ckeditor"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" id="news-id">
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="news-update-or-create">Додати</button>
+                                                <button class="del-goods btn btn-primary"
+                                                    id="news-delete">Видалити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- edit description about -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-index-about" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label for="about-editor">Текст:</label>
+                                        <textarea type="text" id="about-editor" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="about-update">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- edit contacts -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-index-contacts" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label for="footer-email">Пошта:</label>
+                                        <input type="text" id="footer-email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="footer-phone">Номер телефону:</label>
+                                        <input type="text" id="footer-phone" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="footer-adress">Адреса:</label>
+                                        <input type="text" id="footer-adress" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="footer-update">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!------------- Ресторан «Закарпатський колорит» -------------->
+
+            <div class="tab-pane fade" id="nav-kolorit" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#nav-kolorit-menu"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Меню ресторану</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-kolorit-about"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Опис ресторану</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <!-- Add or edit -->
+
+                            <div class="tab-pane fade query-data show active" id="nav-kolorit-menu" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="kolorit-selelct">Оберіть зі списку:</label>
+                                            <select name="kolorit-selelct" id="kolorit-selelct" class="form-control">
+                                            </select>
+                                        </div>
+
+                                        <form enctype="multipart/form-data" method="post">
+                                            <div id="goods-out" class="goods-out"></div>
+
+                                            <div class="form-group">
+                                                <label for="kolorit-name">Назва:</label>
+                                                <input type="text" id="kolorit-name" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="kolorit-image">Фото:</label>
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"
+                                                                id="inputGroupFileAddon01">Завантажити</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="iimg" class="custom-file-input"
+                                                                id="kolorit-image-input"
+                                                                aria-describedby="inputGroupFileAddon01" required>
+                                                            <label class="custom-file-label" id="kolorit-image-label"
+                                                                for="inputGroupFile01">Оберіть
+                                                                файл</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="kolorit-description">Опис:</label>
+                                                <textarea type="text" id="kolorit-description"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" id="kolorit-id">
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="kolorit-update-or-create">Додати</button>
+                                                <button class="del-goods btn btn-primary"
+                                                    id="kolorit-delete">Видалити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add description about kolorit -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-kolorit-about" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <label for="kolorit-image-logo">Фото:</label>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    id="inputGroupFileAddon01">Завантажити</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="iimg" class="custom-file-input"
+                                                    id="kolorit-image-logo" aria-describedby="inputGroupFileAddon01"
+                                                    required>
+                                                <label class="custom-file-label" id="kolorit-index-logo-label"
+                                                    for="inputGroupFile01">Оберіть
+                                                    файл</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kolorit-index-editor">Текст:</label>
+                                        <textarea type="text" id="kolorit-index-editor" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="kolorit-index-description">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!------------- Колиба «Хуторок» -------------->
+
+            <div class="tab-pane fade" id="nav-koliba" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#nav-koliba-menu"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Меню ресторану</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-koliba-about"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Опис ресторану</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <!-- Add or edit -->
+
+                            <div class="tab-pane fade query-data show active" id="nav-koliba-menu" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="koliba-selelct">Оберіть зі списку:</label>
+                                            <select name="koliba-selelct" id="koliba-selelct" class="form-control">
+                                            </select>
+                                        </div>
+
+                                        <form enctype="multipart/form-data" method="post">
+                                            <div id="goods-out" class="goods-out"></div>
+
+                                            <div class="form-group">
+                                                <label for="koliba-name">Назва:</label>
+                                                <input type="text" id="koliba-name" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="koliba-image">Фото:</label>
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"
+                                                                id="inputGroupFileAddon01">Завантажити</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="iimg" class="custom-file-input"
+                                                                id="koliba-image-input"
+                                                                aria-describedby="inputGroupFileAddon01" required>
+                                                            <label class="custom-file-label" id="koliba-image-label"
+                                                                for="inputGroupFile01">Оберіть
+                                                                файл</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="koliba-description">Опис:</label>
+                                                <textarea type="text" id="koliba-description"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" id="koliba-id">
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="koliba-update-or-create">Додати</button>
+                                                <button class="del-goods btn btn-primary"
+                                                    id="koliba-delete">Видалити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Add description about koliba -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-koliba-about" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <label for="koliba-image-logo">Фото:</label>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    id="inputGroupFileAddon01">Завантажити</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="iimg" class="custom-file-input"
+                                                    id="koliba-image-logo" aria-describedby="inputGroupFileAddon01"
+                                                    required>
+                                                <label class="custom-file-label" id="koliba-index-logo-label"
+                                                    for="inputGroupFile01">Оберіть
+                                                    файл</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="koliba-index-editor">Текст:</label>
+                                        <textarea type="text" id="koliba-index-editor" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="koliba-index-description">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!------------- Харчевня -------------->
+
+            <div class="tab-pane fade" id="nav-harchev" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#nav-harchev-menu"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Меню ресторану</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-harchev-about"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Опис ресторану</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <!-- Add or edit -->
+
+                            <div class="tab-pane fade query-data show active" id="nav-harchev-menu" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="harchev-selelct">Оберіть зі списку:</label>
+                                            <select name="harchev-selelct" id="harchev-selelct" class="form-control">
+                                            </select>
+                                        </div>
+
+                                        <form enctype="multipart/form-data" method="post">
+                                            <div id="goods-out" class="goods-out"></div>
+
+                                            <div class="form-group">
+                                                <label for="harchev-name">Назва:</label>
+                                                <input type="text" id="harchev-name" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="harchev-image">Фото:</label>
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"
+                                                                id="inputGroupFileAddon01">Завантажити</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="iimg" class="custom-file-input"
+                                                                id="harchev-image-input"
+                                                                aria-describedby="inputGroupFileAddon01" required>
+                                                            <label class="custom-file-label" id="harchev-image-label"
+                                                                for="inputGroupFile01">Оберіть
+                                                                файл</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="harchev-description">Опис:</label>
+                                                <textarea type="text" id="harchev-description"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" id="harchev-id">
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="harchev-update-or-create">Додати</button>
+                                                <button class="del-goods btn btn-primary"
+                                                    id="harchev-delete">Видалити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add description about harchev -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-harchev-about" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <label for="harchev-image-logo">Фото:</label>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    id="inputGroupFileAddon01">Завантажити</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="iimg" class="custom-file-input"
+                                                    id="harchev-image-logo" aria-describedby="inputGroupFileAddon01"
+                                                    required>
+                                                <label class="custom-file-label" id="harchev-index-logo-label"
+                                                    for="inputGroupFile01">Оберіть
+                                                    файл</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harchev-index-editor">Текст:</label>
+                                        <textarea type="text" id="harchev-index-editor" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="harchev-index-description">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!------------- Готель «Сільське подвір’я» -------------->
+
+            <div class="tab-pane fade" id="nav-podvirja" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-booking-tab" data-toggle="pill"
+                                href="#nav-podvirja-booking" role="tab" aria-controls="v-pills-booking"
+                                aria-selected="false">Переглянути записи</a>
+                            <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#nav-podvirja-menu"
+                                role="tab" aria-controls="v-pills-home" aria-selected="true">Каталог готелю</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#nav-podvirja-about"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Опис готелю</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <!-- Add description about podvirja -->
+
+                            <div class="tab-pane fade query-data show active" id="nav-podvirja-booking" role="tabpanel"
+                                aria-labelledby="v-pills-booking-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label for="podvirja-name">Дата:</label>
+                                        <input name="name" type="date" id="podvirja-date" class="form-control">
+                                    </div>
+                                </form>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Заїзд</th>
+                                            <th scope="col">Виїзд</th>
+                                            <th scope="col">Кімната</th>
+                                            <th scope="col">ПІБ</th>
+                                            <th scope="col">Телефон</th>
+                                            <th scope="col">Пошта</th>
+                                            <th scope="col"><i class="fas fa-times"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="booking-table-by-date">
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <!-- Add or edit -->
+
+                            <div class="tab-pane fade query-data" id="nav-podvirja-menu" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+                                <div class="tab-pane fade query-data show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="podvirja-selelct">Оберіть зі списку:</label>
+                                            <select name="podvirja-selelct" id="podvirja-selelct" class="form-control">
+                                            </select>
+                                        </div>
+
+                                        <form enctype="multipart/form-data" method="post">
+
+                                            <div class="form-group">
+                                                <label for="podvirja-name">Назва:</label>
+                                                <input name="name" type="text" id="podvirja-name" class="form-control"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="podvirja-price">Ціна:</label>
+                                                <input type="text" id="podvirja-price" class="form-control" required
+                                                    pattern="[0-9]{1,7}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="podvirja-area">Площа:</label>
+                                                <input type="text" id="podvirja-area" class="form-control" required
+                                                    pattern="[0-9]{1,4}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="podvirja-quantity">Кількість:</label>
+                                                <input type="text" id="podvirja-quantity" class="form-control" required
+                                                    pattern="[0-9]{1,9}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="podvirja-image">Фото:</label>
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"
+                                                                id="inputGroupFileAddon01">Завантажити</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="iimg" class="custom-file-input"
+                                                                id="podvirja-image-input"
+                                                                aria-describedby="inputGroupFileAddon01" required>
+                                                            <label class="custom-file-label" id="podvirja-image-label"
+                                                                for="inputGroupFile01">Оберіть
+                                                                файл</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="podvirja-description">Опис:</label>
+                                                <textarea type="text" id="podvirja-description"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" id="podvirja-id">
+                                            <div class="form-group">
+                                                <button class="add-to-db btn btn-primary"
+                                                    id="podvirja-update-or-create">Додати</button>
+                                                <button class="del-goods btn btn-primary"
+                                                    id="podvirja-delete">Видалити</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add description about podvirja -->
+
+                            <div class="tab-pane fade query-no-order" id="nav-podvirja-about" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+                                <form enctype="multipart/form-data" method="post">
+                                    <label for="podvirja-image-logo">Фото:</label>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    id="inputGroupFileAddon01">Завантажити</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="iimg" class="custom-file-input"
+                                                    id="podvirja-image-logo" aria-describedby="inputGroupFileAddon01"
+                                                    required>
+                                                <label class="custom-file-label" id="podvirja-index-logo-label"
+                                                    for="inputGroupFile01">Оберіть
+                                                    файл</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="podvirja-index-editor">Текст:</label>
+                                        <textarea type="text" id="podvirja-index-editor" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="add-to-db btn btn-primary"
+                                            id="podvirja-index-description">Змінити</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
